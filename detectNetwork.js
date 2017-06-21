@@ -13,6 +13,39 @@ var detectNetwork = function(cardNumber) {
   // The American Express network always starts with a 34 or 37 and is 15 digits long
 
   // Once you've read this, go ahead and try to implement this function, then return to the console.
+
+  //DINERS CLUB
+  if ((cardNumber.slice(0,2) == '38' || cardNumber.slice(0,2) == '39') && cardNumber.length == 14)
+    return 'Diner\'s Club';
+
+  //AMERICAN EXPRESS
+  if ((cardNumber.slice(0,2) == '34' || cardNumber.slice(0,2) == '37') && cardNumber.length == 15)
+    return 'American Express';
+
+  //VISA
+  if (((cardNumber.slice(0,1) == '4') && (cardNumber.slice(0,4) !== '4903' && cardNumber.slice(0,4) !== '4905' && cardNumber.slice(0,4) !== '4911' && cardNumber.slice(0,4) !== '4936')) && (cardNumber.length == 13 || cardNumber.length == 16 || cardNumber.length == 19))
+    return 'Visa';
+
+  //MASTERCARD
+  if ((cardNumber.slice(0,2) == '51' || cardNumber.slice(0,2) == '52' || cardNumber.slice(0,2) == '53' || cardNumber.slice(0,2) == '54' || cardNumber.slice(0,2) == '55') && cardNumber.length == 16)
+    return 'MasterCard';
+  //Revise code if i have time
+
+  //DISCOVER
+  if((cardNumber.slice(0,4) == '6011' || cardNumber.slice(0,3) == '644' || cardNumber.slice(0,3) == '645' || cardNumber.slice(0,3) == '646' || cardNumber.slice(0,3) == '647' || cardNumber.slice(0,3) == '648' || cardNumber.slice(0,3) == '649' || cardNumber.slice(0,2) == '65'  ) && (cardNumber.length == 16 || cardNumber.length == 19))
+    return 'Discover';
+
+  //MAESTRO
+  if((cardNumber.slice(0,4) == '5018' || cardNumber.slice(0,4) == '5020' || cardNumber.slice(0,4) == '5038' || cardNumber.slice(0,4) == '6304') && (cardNumber.length == 12 || cardNumber.length == 13 || cardNumber.length == 14 || cardNumber.length == 15 || cardNumber.length == 16 || cardNumber.length == 17 || cardNumber.length == 18 || cardNumber.length == 19))
+    return 'Maestro';
+
+  //CHINA UNIONPAY
+  if((((Number(cardNumber.slice(0,6)) > 622125) && (Number(cardNumber.slice(0,6)) < 622926)) || ((Number(cardNumber.slice(0,3)) > 623) && (Number(cardNumber.slice(0,3)) < 627)) || ((Number(cardNumber.slice(0,4)) > 6281) && (Number(cardNumber.slice(0,4)) < 6289))) && ((cardNumber.length > 15) && (cardNumber.length < 20)))
+    return 'China UnionPay';
+
+  //SWITCH
+  if((cardNumber.slice(0,4) == '4903' || cardNumber.slice(0,4) == '4905' || cardNumber.slice(0,4) == '4911' || cardNumber.slice(0,4) == '4936' || cardNumber.slice(0,6) == '564182' || cardNumber.slice(0,6) == '633110' || cardNumber.slice(0,4) == '6333' || cardNumber.slice(0,4) == '6759') && (cardNumber.length == 16 || cardNumber.length == 18 || cardNumber.length == 19))
+    return 'Switch';
 };
 
 
